@@ -8,6 +8,7 @@ public class BMI {
     private double weight;
     private int sex;
     private double bmi;
+    private String result;
 
     public BMI() {
     }
@@ -18,6 +19,9 @@ public class BMI {
         this.weight = weight;
         this.sex = sex;
         this.bmi = weight / Math.pow(height/100, 2);
+        if(this.bmi >= 23 )result = "過重";
+        else if (bmi <18 ) result = "過輕";
+        else result  = "正常";
     }
 
     public int getId() {
@@ -60,9 +64,18 @@ public class BMI {
         this.bmi = bmi;
     }
 
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+    
+
     @Override
     public String toString() {
-        return "BMI{" + "_id=" + _id + ", height=" + height + ", weight=" + weight + ", sex=" + sex + ", bmi=" + bmi + '}';
+        return "BMI{" + "_id=" + _id + ", height=" + height + ", weight=" + weight + ", sex=" + sex + ", bmi=" + bmi + ", result=" + result + '}';
     }
     
     
