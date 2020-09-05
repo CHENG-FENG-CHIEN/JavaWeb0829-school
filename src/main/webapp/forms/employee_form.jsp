@@ -17,14 +17,14 @@
                     <option value="Mary">Mary 瑪莉</option>
                     <option value="Mark">Mark 馬克</option>
                 </select>
-                <p/>
+                <p>
                 薪資 : <input type="number" id="empSalary" name="empSalary" placeholder="請輸入薪資" />
-                <p/>
+                <p>
                 性別 : <input type="radio" id="empSex" name="empSex" value="1" />&nbsp;男
                 <input type="radio" id="empSex" name="empSex" value="2" />&nbsp;女 
-                <p/>
+                <p>
                 主管 : <input type="checkbox" id="empType" name="empType" value="true" /> 是
-                <p/>
+                <p>
                 <button type="submit" class="pure-button pure-button-primary">Add</button>
             </fieldset>
         </form>
@@ -45,15 +45,23 @@
                 </tr>
             </thead>
             <%if (emps != null) {%>
+            <%int total =0;%>
             <tbody>
                 <%for(Map<String, String> emp : emps) {%>
                 <tr>
                     <td><% out.print(emp.get("empName")); %></td>
-                    <td><%=emp.get("empSalary") %></td>
-                    <td><%=emp.get("empSex") %></td>
-                    <td><%=emp.get("empType") %></td>
+                    <td><%=String.format("%,d", Integer.parseInt(emp.get("empSalary"))) %></td>
+                    <td><%=emp.get("empSex").equals("1")?"男":"女" %></td>
+                    <td><%=emp.get("empType") ==null?"":"V" %></td>
                 </tr>
+                 <%total = total + Integer.parseInt(emp.get("empSalary")); %>
                 <%}%>
+                <tr>
+                    <td></td>
+                    <td><%=String.format("%,d", total) %></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
             </tbody>
             <%}%>
         </table>
