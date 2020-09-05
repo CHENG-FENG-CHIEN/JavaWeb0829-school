@@ -1,5 +1,5 @@
 
-package com.mycompany.javaweb.school.servlet.employee;
+package com.web.javaweb.school.servlet.employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
