@@ -22,9 +22,10 @@ public class ImageListJob implements Runnable {
             String[] names = root.list();
             for (String name : names) {
                 File file = new File(path + "/" + name);
-                if (file.isFile()) {
+            if (file.isFile()) {
                     String imagePath = "/JavaWeb0829-school/servlet/image?name=" + name;
-                    out.print("<img width='500' src='" + imagePath + "'><p>");
+                    String imageDeletePath = "/JavaWeb0829-school/servlet/imagedelete?name=" + name;
+                    out.print("<img width='500' src='" + imagePath + "' ondblclick='window.location.href=\"" + imageDeletePath + "\"' style='cursor: hand' title='按二下可刪除'><p>");
                     out.flush();
                 }
             }
@@ -35,3 +36,4 @@ public class ImageListJob implements Runnable {
     }
 
 }
+
