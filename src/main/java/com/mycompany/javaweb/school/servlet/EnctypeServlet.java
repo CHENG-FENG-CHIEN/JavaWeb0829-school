@@ -4,6 +4,7 @@ package com.mycompany.javaweb.school.servlet;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,15 @@ public class EnctypeServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         
         PrintWriter out = resp.getWriter();
-        out.print("OK 中文");
+        
+        // 顯示Header：HTTP 文件 (Part 2)
+        out.println("顯示Header：HTTP 文件 (Part 2)<p>");
+        Enumeration<String> headerNames = req.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String name = headerNames.nextElement();
+            out.print(name + "=" + req.getHeader(name) + "<br>");
+        }
+        out.println("<p>");
         InputStreamReader isr = new InputStreamReader(req.getInputStream(),"utf-8");
         char[] buffer = new char[1];
         while(isr.read(buffer)!=-1){
